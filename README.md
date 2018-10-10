@@ -61,3 +61,9 @@ Job ID                  Username    Queue    Jobname          SessID  NDS   TSK 
 
 
 ```
+
+**Linux学习资料**  
+[Linux command line](https://github.com/hnnd/Linux_command_line)
+
+**生物信息学非常有用的一行代码集成**  
+      [Bioinformatics one-liners](https://github.com/hnnd/oneliners)
