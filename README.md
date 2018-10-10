@@ -6,7 +6,7 @@
 
 ```
 登录服务器10.100.128.161
-`ssh -l username 10.100.128.161` (公共用户public，密码public123)  
+`ssh -l username 10.100.128.160` (公共用户public，密码public123)  
 
 加载环境变量
 $ module add bioinfo
@@ -31,10 +31,9 @@ $ module add bioinfo
 
 ```
 #!/bin/bash
-#$ -S /bin/bash
-#$ -N JobName
-#$ -j y
-#$ -cwd
+#PBS -S /bin/bash
+#PBS -N JobName
+#PBS -l nodes=1:ppn=1
 sleep 60
 ```
 
@@ -43,9 +42,21 @@ sleep 60
 ```
 $ qsub work.sh
 $ qstat
-job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
------------------------------------------------------------------------------------------------------------------
-     44 0.55500 trinity    ngs          r     11/17/2016 21:58:30 all.q@c8                           1        
-     45 0.55500 JobName    ngs          r     11/18/2016 15:00:00 all.q@c2                           1        
+Job ID                    Name             User            Time Use S Queue
+------------------------- ---------------- --------------- -------- - -----
+217.mu01                   JobName          test03                 0 R batch          
+218.mu01                   JobName          test03                 0 R batch          
+219.mu01                   JobName          test03                 0 R batch    
+
+$ qstat -n
+Job ID                  Username    Queue    Jobname          SessID  NDS   TSK   Memory      Time    S   Time
+----------------------- ----------- -------- ---------------- ------ ----- ------ --------- --------- - ---------
+217.mu01                test03      batch    JobName           15970     1      1       --  7200:00:0 R  00:00:48
+   cu06/0
+218.mu01                test03      batch    JobName           15979     1      1       --  7200:00:0 R  00:00:48
+   cu06/1
+219.mu01                test03      batch    JobName           15995     1      1       --  7200:00:0 R  00:00:48
+   cu06/2
+
 
 ```
