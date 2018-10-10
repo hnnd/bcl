@@ -5,7 +5,7 @@
 **说明：`$`后为命令，其他的为输出或说明。**  
 
 ```
-登录服务器10.100.128.161
+登录服务器10.100.128.160
 `ssh -l username 10.100.128.160` (公共用户public，密码public123)  
 
 加载环境变量
@@ -34,6 +34,7 @@ $ module add bioinfo
 #PBS -S /bin/bash
 #PBS -N JobName
 #PBS -l nodes=1:ppn=1
+#PBS -j oe
 sleep 60
 ```
 
