@@ -39,6 +39,7 @@ $ module add bioinfo
 #PBS -N JobName
 #PBS -l nodes=1:ppn=1
 #PBS -j oe
+cd $PBS_O_WORKDIR
 sleep 60
 ```
 
