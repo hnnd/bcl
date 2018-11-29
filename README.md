@@ -12,9 +12,6 @@ Mac or Linux: `ssh -Y username@serverip`
 登录服务器10.100.128.160
 `ssh -l username 10.100.128.160` (公共用户public，密码public123)  
 
-加载环境变量
-$ module add bioinfo
-
 对于计算量较大的任务，请不要在登录节点上直接运行，用qsub提交任务
 ```
 ### Linux基本操作  
