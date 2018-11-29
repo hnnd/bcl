@@ -31,15 +31,14 @@ $ module add bioinfo
 
 **使用集群**  
 尽量不要在登录节点（管理节点）上运行大型程序，ssh到其他计算节点上之后再运行其他程序。登录到10.100.128.160管理节点后，`ssh 计算节点名`，计算节点名可以是cu01, cu02, cu03, cu04, cu05, cu06  
-推荐使用PBS作业管理系统提交任务，先将任务脚本存放在一个文件中，然后用`qsub`提交任务，下面是一个简单的任务`work.sh`, 任务的脚本文件work.sh中包含以下内容：  
+推荐使用SGE作业管理系统提交任务，先将任务脚本存放在一个文件中，然后用`qsub`提交任务，下面是一个简单的任务`work.sh`, 任务的脚本文件work.sh中包含以下内容：  
 
 ```
 #!/bin/bash
-#PBS -S /bin/bash
-#PBS -N JobName
-#PBS -l nodes=1:ppn=1
-#PBS -j oe
-cd $PBS_O_WORKDIR
+#$ -S /bin/bash
+#$ -N JobName
+#$ -cwd
+#$ -j y
 sleep 60
 ```
 
@@ -48,22 +47,16 @@ sleep 60
 ```
 $ qsub work.sh
 $ qstat
-Job ID                    Name             User            Time Use S Queue
-------------------------- ---------------- --------------- -------- - -----
-217.mu01                   JobName          test03                 0 R batch          
-218.mu01                   JobName          test03                 0 R batch          
-219.mu01                   JobName          test03                 0 R batch    
-
-$ qstat -n
-Job ID                  Username    Queue    Jobname          SessID  NDS   TSK   Memory      Time    S   Time
------------------------ ----------- -------- ---------------- ------ ----- ------ --------- --------- - ---------
-217.mu01                test03      batch    JobName           15970     1      1       --  7200:00:0 R  00:00:48
-   cu06/0
-218.mu01                test03      batch    JobName           15979     1      1       --  7200:00:0 R  00:00:48
-   cu06/1
-219.mu01                test03      batch    JobName           15995     1      1       --  7200:00:0 R  00:00:48
-   cu06/2
-
+job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
+-----------------------------------------------------------------------------------------------------------------
+    132 0.55500 P36f0869fb wangys       r     11/29/2018 14:52:18 all.q@cu02                         1        
+    133 0.55500 JobName    wangys       r     11/29/2018 15:02:33 all.q@cu05                         1        
+    134 0.55500 JobName    wangys       r     11/29/2018 15:02:48 all.q@cu01                         1        
+    135 0.55500 JobName    wangys       r     11/29/2018 15:02:48 all.q@cu05                         1        
+    136 0.55500 JobName    wangys       t     11/29/2018 15:02:48 all.q@cu01                         1        
+    137 0.55500 JobName    wangys       r     11/29/2018 15:02:48 all.q@cu02                         1        
+    138 0.55500 JobName    wangys       t     11/29/2018 15:02:48 all.q@cu05                         1        
+    139 0.55500 JobName    wangys       r     11/29/2018 15:02:48 all.q@cu03                         1  
 
 ```
 
