@@ -79,6 +79,23 @@ job-ID  prior   name       user         state submit/start at     queue         
 
 ```
 
+**申请更多的内存资源**  
+系统默认申请的内存为2G，如果你需要申请更多的内存资源，需要指定  
+```
+qsub -cwd -l mem_free=5G,h_vmem=6G batch.sh
+#申请5G，最多只能使用6G
+```
+
+**并行计算**  
+如果你的程序支持并行计算，你可以指定CPU数和计算核数。   
+```
+qsub -pe local 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
+```
+1. Use the   `-pe local K`   option to request K slots on a single cluster node.  
+2. use the `-R y` option to turn on slot reservation.  
+3. Use the  `mem_free=NG`  option to specify N Gigabytes of memory your job.    
+4. Use `h_vmem= nG` to set the hard memory limit for your job. Important: the value, `n`, you set in `h_vmem` is the total memory you set via  `mem_free` divided by the number of slots specified for `-pe`. In other words n=N/K.  
+
 ## 四、一些有用的资料  
 **Linux学习资料**  
 [Linux command line](https://github.com/hnnd/Linux_command_line)
