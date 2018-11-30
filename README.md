@@ -96,6 +96,11 @@ qsub -pe local 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
 3. Use the  `mem_free=NG`  option to specify N Gigabytes of memory your job.    
 4. Use `h_vmem= nG` to set the hard memory limit for your job. Important: the value, `n`, you set in `h_vmem` is the total memory you set via  `mem_free` divided by the number of slots specified for `-pe`. In other words n=N/K.  
 
+**删除任务**  
+```
+qdel 139
+```
+
 ## 四、一些有用的资料  
 **Linux学习资料**  
 [Linux command line](https://github.com/hnnd/Linux_command_line)
