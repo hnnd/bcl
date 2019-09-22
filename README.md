@@ -89,7 +89,7 @@ qsub -cwd -l mem_free=5G,h_vmem=6G batch.sh
 **并行计算**  
 如果你的程序支持并行计算，你可以指定CPU数和计算核数。   
 ```
-qsub -pe local 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
+qsub -pe smp 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
 ```
 1. Use the   `-pe local K`   option to request K slots on a single cluster node.  
 2. use the `-R y` option to turn on slot reservation.  
