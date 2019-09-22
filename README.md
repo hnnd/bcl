@@ -5,7 +5,7 @@
 **说明：`$`后为命令，其他的为输出或说明。**  
 
 终端  
-Windows:Text terminal推荐[putty](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe), Xterm推荐使用[MobaXterm](https://mobaxterm.mobatek.net/download.html)  
+Windows:Text terminal推荐[putty](https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe), Xterm推荐使用[MobaXterm](https://mobaxterm.mobatek.net/download.html)  
 Mac or Linux: `ssh -Y username@serverip`  
 
 ```
