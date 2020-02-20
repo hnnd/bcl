@@ -96,6 +96,17 @@ qsub -pe smp 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
 3. Use the  `mem_free=NG`  option to specify N Gigabytes of memory your job.    
 4. Use `h_vmem= nG` to set the hard memory limit for your job. Important: the value, `n`, you set in `h_vmem` is the total memory you set via  `mem_free` divided by the number of slots specified for `-pe`. In other words n=N/K.  
 
+或者把参数写到脚本里面  
+```
+#!/bin/bash
+#$ -S /bin/bash
+#$ -N JobName
+#$ -cwd
+#$ -j y
+#$ -pe smp 5
+#$ -l mem_free=6G,h_vmem=6G
+需要执行的任务命令
+```
 **删除任务**  
 ```
 qdel 139
