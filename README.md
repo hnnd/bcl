@@ -9,8 +9,8 @@ Windows:Text terminal推荐[putty](https://the.earth.li/~sgtatham/putty/latest/w
 Mac or Linux: `ssh -Y username@serverip`  
 
 ```
-登录服务器10.100.128.160
-`ssh -l username 10.100.128.160` (公共用户public，密码public123)  
+登录服务器10.7.254.22  
+`ssh -l username 10.7.254.22` (公共用户public，密码public123)  
 
 对于计算量较大的任务，请不要在登录节点上直接运行，以交互式方式qrsh登录到计算节点，或者用qsub提交任务
 ```
